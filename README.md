@@ -9,7 +9,6 @@ A user can connect their wallet to the frontend and submit passenger details for
 
 A data flow diagram is provided below to illustrate the flow of data between the frontend, the on-chain contract, and the co-processor.
 
-![Survivor Data Flow Diagram](./survivor-dfd.jpg)
 
 ## Project Structure
 
@@ -28,10 +27,7 @@ Refer to [mugen-docs](https://docs.mugen.builders/cartesi-co-processor-tutorial/
 ```bash
 cartesi-coprocessor start-devnet
 ```
-> To stop and clean up the environment later, use:
-    ``` bash 
-    cartesi-coprocessor stop-devnet
-    ```
+> To stop and clean up the environment later, use: `cartesi-coprocessor stop-devnet`
 
 ### 2. Build and Deploy Backend Cartesi Machine
 
