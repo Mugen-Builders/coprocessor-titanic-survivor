@@ -3,8 +3,8 @@ pragma solidity ^0.8.28;
 
 import "../lib/coprocessor-base-contract/src/CoprocessorAdapter.sol";
 
-contract SurvivorCaller is CoprocessorAdapter {
-    uint256 public survive;
+contract CounterCaller is CoprocessorAdapter {
+    uint256 public count;
     event ResultReceived(bytes32 indexed inputPayloadHash, bytes output);
 
     constructor(address _taskIssuerAddress, bytes32 _machineHash) CoprocessorAdapter(_taskIssuerAddress, _machineHash) {}
@@ -13,14 +13,13 @@ contract SurvivorCaller is CoprocessorAdapter {
         callCoprocessor(input);
     }
 
-    function handleNotice(bytes32 inputPayloadHash, bytes memory notice) internal override {
+    function handleNotice(bytes32 inputPayloadHash, bytes memory notice ) internal override {
         require(notice.length >= 32, "Invalid notice length");
-        survive = abi.decode(notice, (uint256));
+        count = abi.decode(notice, (uint256));
         emit ResultReceived(inputPayloadHash, notice);
     }
 
     function get() external view returns (uint256) {
-        return survive;
+        return count;
     }
-
 }
