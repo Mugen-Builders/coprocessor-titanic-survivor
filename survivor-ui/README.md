@@ -2,7 +2,14 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+This should be run after your backend is published locally and contract is deployed on anvil.
+update the variable
+```javascript
+const CONTRACT_ADDRESS = "0x1429859428C0aBc9C2C47C8Ee9FBaf82cFA0F20f";
+```
+with the deployed address.
+
+Now, run the development server:
 
 ```bash
 npm run dev
