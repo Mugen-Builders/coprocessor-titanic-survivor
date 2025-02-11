@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Getting Started
 
 This should be run after your backend is published locally and contract is deployed on anvil.
-update the variable
+On `app/page.js` update the variable
 ```javascript
 const CONTRACT_ADDRESS = "0x1429859428C0aBc9C2C47C8Ee9FBaf82cFA0F20f";
 ```
