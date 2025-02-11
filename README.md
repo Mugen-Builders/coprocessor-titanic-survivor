@@ -51,6 +51,8 @@ cartesi-coprocessor deploy --contract-name SurvivorCaller --network devnet --con
 
 ### 4. Run Frontend Application
 
+Update the variable `CONTRACT_ADDRESS` on app/page.js
+
 Navigate to the frontend `survivor-ui` folder
 
 ```bash
