@@ -31,7 +31,7 @@ cartesi-coprocessor start-devnet
 
 ### 2. Build and Deploy Backend Cartesi Machine
 
-Navigate to `backend-cartesi-survivor-py/` and follow the steps in the dedicated README file to generate the model and deploy the backend.
+Navigate to `backend-cartesi-survivor-py/` and run the following command to  deploy the backend.
 
 ```bash
 cartesi-coprocessor publish --network devnet
@@ -45,7 +45,9 @@ cartesi-coprocessor address-book
 ### 3. Deploy SurvivorCaller Smart Contract
 
 To deploy the contract, cd into the `contracts/src` folder and run the following command:
+```bash
 cartesi-coprocessor deploy --contract-name SurvivorCaller --network devnet --constructor-args <task_issuer> <machine_hash>
+```
 
 ### 4. Run Frontend Application
 
