@@ -10,36 +10,22 @@ The application entrypoint is the `dapp.py` file.
 cargo install cartesi-coprocessor
 ```
 
-### Build and register the backend machine
-**NOTE**: Before this step, you need to have the co-processor devnet env running(refer parent readme) AND you need a [w3 storage account](https://web3.storage/) to upload the machine.
+### 1. Run Cartesi-Coprocessor Devnet Environment
+
+Before running the dApp, you need to have the Coprocessor devnet environment running. It will spin up a local operator in devnet mode that will host the dApp backend.
+
+Refer to [mugen-docs](https://docs.mugen.builders/cartesi-co-processor-tutorial/introduction) to understand the components and setup the environment
+
+```bash
+cartesi-coprocessor start-devnet
 ```
-cartesi-coprocessor register --email <w3 storage account email>
+> To stop and clean up the environment later, use: `cartesi-coprocessor stop-devnet`
+
+### 2. Build and Deploy Backend Cartesi Machine
+
+Navigate to `backend-cartesi-survivor-py/` and run the following command to  deploy the backend.
+
+```bash
+cartesi-coprocessor publish --network devnet
 ```
 
-### Import the machine for local operator
-```
-curl -X POST -F file=@output.car http://127.0.0.1:5001/api/v0/dag/import
-```
-Operator will start downloading the dapp-machine. Hit `/ensure` endpoint to check the status. You can start sending inputs when status is ready.
-```
-curl -X POST "http://127.0.0.1:3034/ensure/$CID/$MACHINE_HASH/$SIZE"
-```
-
-Set env variables(if missing in above step)
-```
-CID=$(cat output.cid) 
-SIZE=$(cat output.size)
-MACHINE_HASH=$(xxd -p .cartesi/image/hash | tr -d '\n')
-```
-Once machine is downloaded, deploy the caller contract and start interacting with frontend.
-
-
-## Sample input JSON
-The backend receives hex encoded json input. A sample input payload is shown below:
-```
-{
-  "method":"increment",
-  "counter": 3
-}
-```
-The backend logic will increment the counter by 1 and emit a notice with value 4.
